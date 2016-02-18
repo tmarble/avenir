@@ -2,6 +2,8 @@
 
 Clojure utilities which may find a proper home in the future
 
+[![Clojars Project](https://img.shields.io/clojars/v/avenir.svg)](https://clojars.org/avenir)
+
 ## Usage
 
 _TBD_
