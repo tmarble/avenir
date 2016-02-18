@@ -1,25 +1,25 @@
 (def project 'avenir)
-(def version "0.1.1")
+(def version "0.1.2")
 (def description "Clojure utilities which may find a proper home in the future")
+(def project-url "https://github.com/tmarble/avenir")
 
 (set-env! :resource-paths #{"src"}
           :source-paths   #{"test"}
           :dependencies   '[[org.clojure/clojure "1.8.0" :scope "provided"]
                             [org.clojure/clojurescript "1.7.228" :scope "provided"]
-
-                            ;; cljs
+                            ;; cljs-dev
                             [com.cemerick/piggieback "0.2.1"     :scope "test"]
                             [weasel                 "0.7.0"      :scope "test"]
                             [org.clojure/tools.nrepl "0.2.12"    :scope "test"]
-
-                            ;; testing/development
                             [adzerk/boot-reload     "0.4.5"      :scope "test"]
-                            [adzerk/boot-test "1.1.0" :scope "test"]
-                            [adzerk/bootlaces "0.1.13" :scope "test"]
+                            [pandeiro/boot-http "0.7.2" :scope "test"]
                             [adzerk/boot-cljs       "1.7.228-1"  :scope "test"]
                             [adzerk/boot-cljs-repl  "0.3.0"      :scope "test"]
+
+                            ;; testing/development
+                            [adzerk/boot-test "1.1.0" :scope "test"]
                             [crisptrutski/boot-cljs-test "0.2.2-SNAPSHOT" :scope "test"]
-                            [pandeiro/boot-http "0.7.2"]
+                            [adzerk/bootlaces "0.1.13" :scope "test"]
 
                             ;; api docs
                             [funcool/boot-codeina "0.1.0-SNAPSHOT" :scope "test"]
@@ -33,8 +33,7 @@
   '[adzerk.boot-test :refer [test]]
   '[crisptrutski.boot-cljs-test :refer [test-cljs prep-cljs-tests run-cljs-tests]]
   '[adzerk.bootlaces :refer :all]
-  '[funcool.boot-codeina :refer [apidoc]]
-  )
+  '[funcool.boot-codeina :refer [apidoc]])
 
 (bootlaces! version)
 
@@ -42,8 +41,8 @@
   pom {:project     project
        :version     version
        :description description
-       :url         "https://github.com/tmarble/avenir"
-       :scm         {:url "https://github.com/tmarble/avenir.git"}
+       :url         project-url
+       :scm         {:url project-url}
        :license     {"MIT" "http://opensource.org/licenses/MIT"}}
   cljs {:source-map true}
   test-cljs {:js-env :phantom}
@@ -51,8 +50,7 @@
           :title (name project)
           :sources #{"src"}
           :format :markdown
-          :description  description}
-  )
+          :description  description})
 
 (deftask clj-dev
   "Clojure REPL for CIDER"
