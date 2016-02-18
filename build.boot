@@ -1,5 +1,5 @@
 (def project 'avenir)
-(def version "0.1.0")
+(def version "0.1.1")
 (def description "Clojure utilities which may find a proper home in the future")
 
 (set-env! :resource-paths #{"src"}

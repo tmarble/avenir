@@ -6,8 +6,8 @@ All notable changes to this project will be documented in this file. This change
 - TBD
 
 ## [0.1.1] - 2016-02-18
-### Added
-- Additional functions
+### Changed
+- Fixed files overwritten by automatic tooling
 
 ## 0.1.0
 ### Added
