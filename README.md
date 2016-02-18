@@ -1,13 +1,14 @@
 # avenir
 
-Clojure utilities which may find a home elsewhere in the future
+A Clojure library designed to ... well, that part is up to you.
 
 ## Usage
 
-_TBD_
+FIXME
 
-## Copyright and license
+## License
 
-Copyright © 2016 Tom Marble
+Copyright © 2016 FIXME
 
-Licensed under the [MIT](http://opensource.org/licenses/MIT) [LICENSE](LICENSE)
+Distributed under the Eclipse Public License either version 1.0 or (at
+your option) any later version.

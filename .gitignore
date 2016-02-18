@@ -2,6 +2,7 @@
 
 # project specific
 /logs
+/doc
 
 # Java build artifacts
 /lib
