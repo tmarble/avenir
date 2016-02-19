@@ -1,8 +1,0 @@
-{:require [avenir.utils]
- :compiler-options {:asset-path "js/app.out"
-                    :source-map true
-                    :source-map-timestamp true
-                    :verbose false
-                    :cache-analysis true
-                    :optimizations :none
-                    :pretty-print false}}
