@@ -6,7 +6,7 @@ Clojure utilities which may find a proper home in the future
 
 ## Usage
 
-_TBD_
+See the [API Docs](http://tmarble.github.io/avenir/doc/api/)
 
 ## Copyright and license
 
