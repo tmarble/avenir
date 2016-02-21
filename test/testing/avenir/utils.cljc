@@ -1,11 +1,8 @@
 (ns testing.avenir.utils
   (:require [clojure.string :as string]
-            #?(:clj [clojure.test :refer [deftest testing is run-tests]]
-               :cljs [cljs.test :as test :refer-macros [deftest testing is run-tests]])
+            #?(:clj [clojure.test :refer [deftest testing is]]
+               :cljs [cljs.test :as test :refer-macros [deftest testing is]])
             [avenir.utils :as u]))
-
-(defn run []
-  (run-tests))
 
 (deftest test-assoc-if
   (testing "test assoc-if"
@@ -49,8 +46,10 @@
   (testing "test ppmeta"
     (let [m-newlines (with-out-str (u/ppmeta mymap))
           m (string/replace m-newlines "\n" "")]
-      (is (re-find #":a.*\^\{:foo :anything.*var-with-meta" m))
-      (is (re-find #":b.*\^\{:type :anything.*var-with-type" m))
+      (is (re-find #":a.*\:foo :anything" m))
+      (is (re-find #":a.*var-with-meta" m))
+      (is (re-find #":b.*:type :anything" m))
+      (is (re-find #":b.*var-with-type" m))
       ;; This seems wrong... shouldn't it be...
       ;; (is (re-find #":c \^\{:doc \"an annotated vector\"} \[123\]" m)
       (is (re-find #":c \[123\]" m)))))
@@ -134,8 +133,3 @@
             :42 "42"
             :println "println"}
           (u/keywordize somemap)))))
-
-(deftest test-approx=
-  (testing "test approx="
-    (is (u/approx= 1.23 1.2345))
-    (is (not (u/approx= 1.23 1.24)))))

@@ -5,6 +5,8 @@
             [clojure.string :as string]
             ))
 
+#?(:cljs (enable-console-print!))
+
 (defn assoc-if
   "assoc k v in m *iff* v
 
@@ -21,7 +23,7 @@ val(s) for those val(s) that are truthy."
 
 (defn str-append
   "Append b to a (if a is not nil), else return b"
-  {:added "0.1.3"}
+  {:added "0.2.0"}
   [a b]
   (if a
     (str a b)
@@ -29,7 +31,7 @@ val(s) for those val(s) that are truthy."
 
 (defn remove-fn
   "Replaces any **(fn? v)** in the map m with `\"<fn>\"`, recursively"
-  {:added "0.1.3"}
+  {:added "0.2.0"}
   ([v]
    (cond
      (fn? v) "<fn>"
@@ -46,14 +48,14 @@ val(s) for those val(s) that are truthy."
 
 (defn ppmeta
   "Pretty print with metadata"
-  {:added "0.1.3"}
+  {:added "0.2.0"}
   [x]
   (binding [*print-meta* true]
     (pprint x)))
 
 (defn and-f
   "and as a function (to be used with reduce)"
-  {:tag boolean :added "0.1.3"}
+  {:tag boolean :added "0.2.0"}
   [& args]
   (when-let [[a & more-as] (not-empty args)]
     (if (and a more-as)
@@ -62,7 +64,7 @@ val(s) for those val(s) that are truthy."
 
 (defn or-f
   "or as a function (to be used with reduce)"
-  {:tag boolean :added "0.1.3"}
+  {:tag boolean :added "0.2.0"}
   [& args]
   (when (not-empty args)
     (if-let [a (first args)]
@@ -71,13 +73,13 @@ val(s) for those val(s) that are truthy."
 
 (defn not-f
   "not as a function"
-  {:tag boolean :added "0.1.3"}
+  {:tag boolean :added "0.2.0"}
   [arg]
   (if arg false true))
 
 (defn implies
   "logical implies"
-  {:tag boolean :added "0.1.3"}
+  {:tag boolean :added "0.2.0"}
   ([] true)
   ([a] true)
   ([a b] (or (not a) b))
@@ -92,13 +94,13 @@ val(s) for those val(s) that are truthy."
 
 (defn concatv
   "Return the concat of args as a vector"
-  {:added "0.1.3"}
+  {:added "0.2.0"}
   [& args]
   (vec (apply concat args)))
 
 (defn vec-index-of
   "Find the index of o in v"
-  {:added "0.1.3"}
+  {:added "0.2.0"}
   [v o]
   (first
     (remove nil?
@@ -112,20 +114,20 @@ val(s) for those val(s) that are truthy."
 The exception type:
 * For CLJ throws an Exception
 * For CLJS throws a js/Error"
-  {:added "0.1.3"}
+  {:added "0.2.0"}
   [msg]
   #?(:clj (throw (Exception. msg))
      :cljs (throw (js/Error. msg))))
 
 (defn throw-err
   "Throw an error with all the args (not interspersed with spaces)"
-  {:added "0.1.3"}
+  {:added "0.2.0"}
   [& args]
   (throw-msg (apply str args)))
 
 (defn throw-args
   "Throw an error with all the args (interspersed with spaces)"
-  {:added "0.1.3"}
+  {:added "0.2.0"}
   [& args]
   (throw-msg (apply str (interpose " " args))))
 
@@ -134,19 +136,19 @@ The exception type:
 #?(:cljs
    (defn float?
      "Returns true if n is a floating point number"
-     {:added "0.1.3"}
+     {:added "0.2.0"}
      [n]
      (and (number? n) (not (integer? n)))))
 
 (defn ^boolean as-boolean
   "Coerce the argument to a boolean"
-  {:added "0.1.3"}
+  {:added "0.2.0"}
   [x]
   (if x true false))
 
 (defn as-int
   "Coerce the argument to an int"
-  {:added "0.1.3"}
+  {:added "0.2.0"}
   [x]
   (cond
     (nil? x) 0
@@ -160,7 +162,7 @@ The exception type:
 
 (defn as-float
   "Coerce the argument to a float"
-  {:added "0.1.3"}
+  {:added "0.2.0"}
   [x]
   (cond
     (nil? x) 0.0
@@ -174,7 +176,7 @@ The exception type:
 
 (defn as-keyword
   "coerce k to a keyword"
-  {:added "0.1.3"}
+  {:added "0.2.0"}
   [k]
   (cond
     (keyword? k) k
@@ -186,7 +188,7 @@ The exception type:
 
 (defn keywordize
   "coerce the keys of the map to be keywords"
-  {:added "0.1.3"}
+  {:added "0.2.0"}
   ([v]
    (cond
      (map? v) (reduce-kv keywordize {} v)
@@ -196,15 +198,3 @@ The exception type:
      (cond
        (map? v) (reduce-kv keywordize {} v)
        :else v))))
-
-(defn approx=
-  "Simple way to determine if two floating point numbers are approximately
-  equal using the lesser precision of either argument"
-  {:added "0.1.3"}
-  [x y]
-  (let [x-str (str (as-float x))
-        x-precision (count x-str)
-        y-str (str (as-float y))
-        y-precision (count y-str)
-        precision (min x-precision y-precision)]
-    (= (subs x-str 0 precision) (subs y-str 0 precision))))

@@ -3,11 +3,15 @@ All notable changes to this project will be documented in this file. This change
 
 ## [Unreleased]
 ### Added
+- *TBD*
+
+## [0.2.0] - 2016-02-21
+### Added
+- Added math namespace
+- Fixed cljs tests
 - Added Clojars badge
 - Created gh-pages branch
 - Added API docs pointer
-- Added math namespace
-- (Attempt) to Debug cljs-test (no tests are run!)
 
 ## [0.1.2] - 2016-02-18
 ### Changed
@@ -25,4 +29,5 @@ All notable changes to this project will be documented in this file. This change
 
 [0.1.1]: https://github.com/tmarble/avenir/compare/0.1.0...0.1.1
 [0.1.2]: https://github.com/tmarble/avenir/compare/0.1.1...0.1.2
-[Unreleased]: https://github.com/tmarble/avenir/compare/0.1.2...HEAD
+[0.2.0]: https://github.com/tmarble/avenir/compare/0.1.2...0.2.0
+[Unreleased]: https://github.com/tmarble/avenir/compare/0.2.0...HEAD
