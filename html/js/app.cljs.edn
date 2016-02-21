@@ -1,4 +1,4 @@
-{:require [avenir.utils]
+{:require [avenir.utils avenir.math testing.avenir.utils testing.avenir.math]
  :compiler-options {:asset-path "js/app.out"
                     :source-map true
                     :source-map-timestamp true

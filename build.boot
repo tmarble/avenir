@@ -30,7 +30,7 @@
   '[adzerk.boot-cljs-repl :refer [cljs-repl start-repl repl-env]]
   '[pandeiro.boot-http :refer [serve]]
   '[adzerk.boot-reload    :refer [reload]]
-  '[adzerk.boot-test :refer [test]]
+  '[adzerk.boot-test :refer :all] ;; [test]]
   '[crisptrutski.boot-cljs-test :refer [test-cljs prep-cljs-tests run-cljs-tests]]
   '[adzerk.bootlaces :refer :all]
   '[funcool.boot-codeina :refer [apidoc]])
@@ -56,6 +56,7 @@
   "Clojure REPL for CIDER"
   []
   (comp
+    (sift :add-resource #{"test"}) ;; DEBUG test
     (cider)
     (repl :server true)
     (wait)))
@@ -64,8 +65,9 @@
   "ClojureScript Browser REPL for CIDER"
   []
   (comp
-    (sift :add-resource #{"html"})
+    (sift :add-resource #{"html" "test"}) ;; DEBUG test
     (cider)
+    ;; NOTE namespaces to load in html/js/app.cljs.edn
     (serve :dir "target")
     (watch)
     (reload)
@@ -73,12 +75,28 @@
     (cljs)
     (target :dir #{"target"})))
 
+(deftask testing
+  "merge source paths in for testing"
+  []
+  (merge-env! :source-paths #{"test"})
+  identity)
+
+(deftask cljs-test
+  "Test CLJS and leave artifacts in target for debugging"
+  []
+  (comp
+    (testing)
+    (sift :add-resource #{"html"}) ;; DEBUG test
+    (cljs)
+    (test-cljs)
+    (target :dir #{"target"})))
+
 (deftask test-both
   "Run both CLJ tests and CLJS tests"
   []
   (comp
     (test)
-    (test-cljs)))
+    (cljs-test)))
 
 (deftask build
   "Build jar and install to local repo."

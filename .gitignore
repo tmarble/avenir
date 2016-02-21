@@ -3,6 +3,8 @@
 # project specific
 /logs
 /doc
+# artifact of boot-cljs ?
+/out
 
 # Java build artifacts
 /lib

@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file. This change
 ## [Unreleased]
 ### Added
 - Added Clojars badge
+- Created gh-pages branch
+- Added API docs pointer
+- Added math namespace
+- (Attempt) to Debug cljs-test (no tests are run!)
 
 ## [0.1.2] - 2016-02-18
 ### Changed
