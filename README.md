@@ -8,13 +8,13 @@ Clojure utilities which may find a proper home in the [future](http://www.larous
 
 See the [API Docs](http://tmarble.github.io/avenir/doc/api/)
 
-See the examples!
+Check out these examples!
 * [avenir-clj](examples/avenir-clj) Using avenir in a Clojure project
  * **boot run** will run the example on the command line
  * **boot build** will build an uberjar you can run: `java -jar target/avenir-clj.jar`
 * [avenir-cljs](examples/avenir-cljs) Using avenir in a ClojureScript project
  * **boot run** will run the example you can open in your brower `open http://localhost:3000`
-* [avenir-script](examples/avenir-scriptj) Using avenir in a boot script
+* [avenir-script](examples/avenir-script/avenir-script) Using avenir in a boot script
  * `./avenir-script` will run the example
 
 
@@ -23,6 +23,10 @@ referred to as follows:
  * The function `float?` must be included from `[cljs.pprint :refer [float?]]`
  * The function `format` must be included from `[avenir.utils :refer [format]]`
    (see also [CLJS-324](http://dev.clojure.org/jira/browse/CLJS-324))
+ * When used with ClojureScript **avenir** targets browsers. This is
+   important to know because many of the math functions depend on the
+   availability of the [Math](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math) object which is not available in PhantomJS,
+   Node or [other JavaScript environments](https://github.com/bensu/doo#setting-up-environments).
 
 ## Development
 
@@ -39,9 +43,9 @@ $ boot clj-dev
 nREPL server started on port 42328 on host 127.0.0.1 - nrepl://127.0.0.1:42328
 ````
 
-Now you can connect to that port with `M-x cider-connect`. Or, if you
+Now you can connect to that port with `M-x cider-connect`. (Or if you
 want to simplify the process make a keybinding to my function `my-cider-connect`
-which I have proposed as an [enhancement](https://github.com/clojure-emacs/cider/issues/1580) to CIDER. Then you can play with the library interactively:
+which I have proposed as an [enhancement](https://github.com/clojure-emacs/cider/issues/1580) to CIDER). Now you can play with the library interactively:
 
 ````
 boot.user> (in-ns 'avenir.utils)
@@ -50,6 +54,9 @@ avenir.utils> (keywordize {"one" "one" 2 "two" 'three "three"})
 {:one "one", :2 "two", :three "three"}
 avenir.utils>
 ````
+
+If you change a source file run `M-x cider-eval-buffer` for
+the changes to be reflected in the REPL.
 
 You can use `C-c C-q` to quit CIDER and then `^C` to stop the nREPL server.
 
@@ -79,7 +86,7 @@ Writing target dir(s)...
 Elapsed time: 34.950 sec
 ````
 Now you can connect to CIDER and then start the Browser REPL.
-Don't forget to `open http://localhost:3000` to connect to the browser!
+After `(start-repl)` don't forget to open http://localhost:3000 to connect to the browser!
 
 ````
 boot.user> (start-repl)
@@ -99,6 +106,8 @@ avenir.utils> (println "Hello!")
 nil
 ````
 
+Simply save changes to the source files to have them reloded automatically in the browser.
+
 You can use `:cljs/quit` to quit the browser REPL, `C-c C-q` to quit CIDER and then `^C` to stop the nREPL server.
 
  * **build** Build jar and install to local repo
@@ -108,7 +117,7 @@ You can use `:cljs/quit` to quit the browser REPL, `C-c C-q` to quit CIDER and t
 
 * **test** Run tests with Clojure
 * **tests** Run tests with ClojureScript
- * The JavaScript environment `:js-env` is set to `:phantom` by default. You must install [PhantomJS](http://phantomjs.org/) for this to work.
+ * The JavaScript environment `:js-env` is set to `:phantom` by default. You must install [PhantomJS](http://phantomjs.org/) for this to work. (*NOTE* certain `avenir.math` tests will be skipped when running in PhantomJS)
  * In order to test in browsers like Firefox (`:js-env :firefox`) you
    will also need to install
    [Karma](http://karma-runner.github.io/0.13/index.html).
