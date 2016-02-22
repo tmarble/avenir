@@ -22,7 +22,8 @@
                     [adzerk/bootlaces "0.1.13" :scope "test"]
 
                     ;; api docs
-                    [funcool/boot-codeina "0.1.0-SNAPSHOT" :scope "test"]])
+                    [net.info9/boot-codeina "0.2.1-SNAPSHOT" :scope "test"]
+                    ])
 
 (require
   '[adzerk.boot-cljs      :refer [cljs]]
@@ -46,11 +47,15 @@
   cljs {:source-map true}
   test-cljs {:js-env :phantom
              :namespaces #{"testing.avenir.utils" "testing.avenir.math"}}
-  apidoc {:version version
-          :title (name project)
+  apidoc {:title (name project)
           :sources #{"src"}
+          :description description
+          :version version
           :format :markdown
-          :description  description})
+          ;; :include #{'avenir.utils 'avenir.math}
+          :reader :cljc
+          :src-uri "https://github.com/tmarble/avenir/blob/master/"
+          :src-uri-prefix "#L"})
 
 (deftask clj-dev
   "Clojure REPL for CIDER"

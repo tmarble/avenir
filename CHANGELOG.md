@@ -5,13 +5,15 @@ All notable changes to this project will be documented in this file. This change
 ### Added
 - *TBD*
 
-## [0.2.0] - 2016-02-21
+## [0.2.0] - 2016-02-22
 ### Added
 - Added math namespace
 - Fixed cljs tests
 - Added Clojars badge
+- Used my patched version of boot-codeina to generate API docs
 - Created gh-pages branch
 - Added API docs pointer
+- Added examples: avenir-clj, avenir-cljs, avenir-script
 
 ## [0.1.2] - 2016-02-18
 ### Changed

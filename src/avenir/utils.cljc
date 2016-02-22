@@ -1,11 +1,10 @@
 (ns avenir.utils
   "Utilties from *l'avenir* (the future)!"
-  (:require #?(:clj [clojure.pprint :refer [pprint]]
-               :cljs [cljs.pprint :refer [pprint]])
-            [clojure.string :as string]
-            ))
-
-#?(:cljs (enable-console-print!))
+  (:require [clojure.string :as string]
+            #?(:clj [clojure.pprint :refer [pprint]]
+               :cljs [cljs.pprint :refer [pprint float?]])
+            #?@(:cljs [[goog.string :as gstring]
+                       [goog.string.format]])))
 
 (defn assoc-if
   "assoc k v in m *iff* v
@@ -53,7 +52,7 @@ val(s) for those val(s) that are truthy."
   (binding [*print-meta* true]
     (pprint x)))
 
-(defn and-f
+(defn and-fn
   "and as a function (to be used with reduce)"
   {:tag boolean :added "0.2.0"}
   [& args]
@@ -62,7 +61,7 @@ val(s) for those val(s) that are truthy."
       (recur more-as)
       a)))
 
-(defn or-f
+(defn or-fn
   "or as a function (to be used with reduce)"
   {:tag boolean :added "0.2.0"}
   [& args]
@@ -71,7 +70,7 @@ val(s) for those val(s) that are truthy."
       a
       (recur (rest args)))))
 
-(defn not-f
+(defn not-fn
   "not as a function"
   {:tag boolean :added "0.2.0"}
   [arg]
@@ -90,7 +89,7 @@ val(s) for those val(s) that are truthy."
                       1 true
                       2 (implies (first more) (second more))
                       (apply implies (implies (first more) (second more)) (rest (rest more)))))
-                  (apply and-f more))))
+                  (apply and-fn more))))
 
 (defn concatv
   "Return the concat of args as a vector"
@@ -134,11 +133,15 @@ The exception type:
 ;; coercions
 
 #?(:cljs
-   (defn float?
-     "Returns true if n is a floating point number"
-     {:added "0.2.0"}
-     [n]
-     (and (number? n) (not (integer? n)))))
+(defn format
+  "Formats a string using **printf** style syntax
+
+  **NOTE**: *only defined for ClojureScript* see [CLJS-324](http://dev.clojure.org/jira/browse/CLJS-324)"
+  {:added "0.2.0"}
+  [& args]
+  (apply gstring/format args)
+  )
+)
 
 (defn ^boolean as-boolean
   "Coerce the argument to a boolean"

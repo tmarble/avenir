@@ -4,7 +4,6 @@
                :cljs [cljs.test :as test :refer-macros [deftest testing is]])
              [avenir.math :as m]))
 
-
 (def user-agent
   #?(:clj "clojure"
      :cljs (.-userAgent js/navigator)))

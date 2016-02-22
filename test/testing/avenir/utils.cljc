@@ -1,8 +1,10 @@
 (ns testing.avenir.utils
   (:require [clojure.string :as string]
+            #?(:cljs [cljs.pprint :refer [float?]])
             #?(:clj [clojure.test :refer [deftest testing is]]
                :cljs [cljs.test :as test :refer-macros [deftest testing is]])
-            [avenir.utils :as u]))
+            #?(:clj [avenir.utils :as u]
+               :cljs [avenir.utils :as u :refer [format]])))
 
 (deftest test-assoc-if
   (testing "test assoc-if"
@@ -11,14 +13,12 @@
             (u/assoc-if :b 2)
             (u/assoc-if :c nil))))
     (is (= {:a 4 :b 2}
-          (u/assoc-if {:a 1} :b 2 :c false :d nil :a 4)))
-    ))
+          (u/assoc-if {:a 1} :b 2 :c false :d nil :a 4)))))
 
 (deftest test-str-append
   (testing "test str-append"
     (is (= "Hello World!" (u/str-append "Hello " "World!")))
-    (is (= "World!" (u/str-append nil "World!")))
-    ))
+    (is (= "World!" (u/str-append nil "World!")))))
 
 (defn hello [] (println "hello"))
 (defn goodbye [] (println "hello"))
@@ -60,18 +60,17 @@
 
 (deftest boolean-fns
   (testing "test boolean functions"
-    (is (reduce u/and-f three-true))
-    (is (not (reduce u/and-f mixed-truth)))
-    (is (not (reduce u/and-f three-false)))
-    (is (reduce u/or-f three-true))
-    (is (reduce u/or-f mixed-truth))
-    (is (not (reduce u/or-f three-false)))
-    (is (= [false true false] (mapv u/not-f mixed-truth)))
+    (is (reduce u/and-fn three-true))
+    (is (not (reduce u/and-fn mixed-truth)))
+    (is (not (reduce u/and-fn three-false)))
+    (is (reduce u/or-fn three-true))
+    (is (reduce u/or-fn mixed-truth))
+    (is (not (reduce u/or-fn three-false)))
+    (is (= [false true false] (mapv u/not-fn mixed-truth)))
     (is (u/implies true true))
     (is (not (u/implies true false)))
     (is (u/implies false true))
-    (is (u/implies false false))
-    ))
+    (is (u/implies false false))))
 
 (deftest test-concatv
   (testing "test concatv"
@@ -91,6 +90,12 @@
                   (catch Exception e (.getMessage e))
                   :cljs
                   (catch js/Error e (.-message e))))))))
+
+(deftest test-cljs-only-functions
+  (testing "test CLJS only functions"
+    (is (float? 3.14))
+    (is (not (float? 42)))
+    (is (= "123.450" (format "%6.3f" 123.45)))))
 
 (deftest test-as-boolean
   (testing "test as-boolean"

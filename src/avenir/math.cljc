@@ -1,8 +1,7 @@
 (ns avenir.math
   "Math functions from *l'avenir* (the future)!"
   #?(:clj (:import [java.lang
-                    Math]))
-  )
+                    Math])))
 
 ;; constants
 
@@ -50,13 +49,13 @@
 
 (def #^{:added "0.2.0"}
   PI
-  "The value of π (*pi*), approximately 3.14159"
+  "The value of π ( *pi* ), approximately 3.14159"
   #?(:clj Math/PI
      :cljs (.-PI js/Math)))
 
 (def #^{:added "0.2.0"}
   PI_2
-  "π/2 = one half the value of π (*pi*), approximately 1.57079"
+  "π/2 = one half the value of π ( *pi* ), approximately 1.57079"
   (/ PI 2.0))
 
 (def #^{:added "0.2.0"}
@@ -80,14 +79,14 @@
   (if (neg? a) (- a) a))
 
 (defn acos
-  "Returns the arc cosine of a value; the returned angle is in the range 0.0 through π (*pi*)"
+  "Returns the arc cosine of a value; the returned angle is in the range 0.0 through π ( *pi* )"
   {:added "0.2.0"}
   [a]
   #?(:clj (Math/acos a)
      :cljs (.acos js/Math a)))
 
 (defn approx=
-  "Approximate equality test within epsilon (*default epsilon* 1e-6)"
+  "Approximate equality test within epsilon ( *default epsilon* 1e-6)"
   {:added "0.2.0"}
   ([x y]
    (approx= x y 1e-6))
@@ -109,7 +108,7 @@
      :cljs (.atan js/Math a)))
 
 (defn atan2
-  "Returns the angle θ (*theta*) from the conversion of rectangular coordinates (x, y) to polar coordinates (r, θ)."
+  "Returns the angle θ ( *theta* ) from the conversion of rectangular coordinates (x, y) to polar coordinates (r, θ)."
   {:added "0.2.0"}
   [y x]
   #?(:clj (Math/atan2 y x)
