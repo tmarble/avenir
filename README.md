@@ -22,7 +22,7 @@ A note about ClojureScript: these functions from Clojure need to be
 referred to as follows:
  * The function `float?` must be included from `[cljs.pprint :refer [float?]]`
  * The function `format` must be included from `[avenir.utils :refer [format]]`
-   (see also [CLJS-324](http://dev.clojure.org/jira/browse/CLJS-324))
+   (see [CLJS-324](http://dev.clojure.org/jira/browse/CLJS-324))
  * When used with ClojureScript **avenir** targets browsers. This is
    important to know because many of the math functions depend on the
    availability of the [Math](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math) object which is not available in PhantomJS,
@@ -86,7 +86,8 @@ Writing target dir(s)...
 Elapsed time: 34.950 sec
 ````
 Now you can connect to CIDER and then start the Browser REPL.
-After `(start-repl)` don't forget to open http://localhost:3000 to connect to the browser!
+After `(start-repl)` don't forget to open http://localhost:3000
+to connect to the browser!
 
 ````
 boot.user> (start-repl)
@@ -125,7 +126,7 @@ You can use `:cljs/quit` to quit the browser REPL, `C-c C-q` to quit CIDER and t
 
 ````
 apt-get install npm
-npm install -g karma karma-cljs-test  karma-cli karma-firefox-launcher
+npm install -g karma karma-cljs-test karma-cli karma-firefox-launcher
 ````
 
 * **testc** Run tests with Clojure & ClojureScript
