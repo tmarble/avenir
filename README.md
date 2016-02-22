@@ -86,7 +86,7 @@ Writing target dir(s)...
 Elapsed time: 34.950 sec
 ````
 Now you can connect to CIDER and then start the Browser REPL.
-After `(start-repl)` don't forget to open http://localhost:3000
+After `(start-repl)` don't forget to open [http://localhost:3000](http://localhost:3000)
 to connect to the browser!
 
 ````
