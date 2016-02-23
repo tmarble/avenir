@@ -8,6 +8,8 @@ Clojure utilities which may find a proper home in the [future](http://www.larous
 
 See the [API Docs](http://tmarble.github.io/avenir/doc/api/)
 
+Follow changes in the [CHANGELOG](CHANGELOG.md)
+
 Check out these examples!
 * [avenir-clj](examples/avenir-clj) Using avenir in a Clojure project
  * **boot run** will run the example on the command line
@@ -30,7 +32,8 @@ referred to as follows:
 
 ## Development
 
-The avenir library uses [boot](http://boot-clj.com/) as a build tool.
+The avenir library uses [boot](http://boot-clj.com/) as a build tool. For
+more on boot see [Sean's blog](http://seancorfield.github.io/blog/2016/02/02/boot-new/) and the [boot Wiki](https://github.com/boot-clj/boot/wiki).
 
 You can get help for all available boot tasks with `boot -h`
 
