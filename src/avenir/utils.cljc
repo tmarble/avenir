@@ -91,6 +91,17 @@ val(s) for those val(s) that are truthy."
                       (apply implies (implies (first more) (second more)) (rest (rest more)))))
                   (apply and-fn more))))
 
+(defn xor
+  "Exclusive or"
+  {:added "0.2.1"}
+  ([a]
+   a)
+  ([a b]
+   (or (and a (not b)) (and (not a) b)))
+  ([a b & cs]
+   (xor (xor a b)
+     (apply xor cs))))
+
 (defn concatv
   "Return the concat of args as a vector"
   {:added "0.2.0"}

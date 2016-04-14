@@ -70,7 +70,15 @@
     (is (u/implies true true))
     (is (not (u/implies true false)))
     (is (u/implies false true))
-    (is (u/implies false false))))
+    (is (u/implies false false))
+    (is (u/xor true))
+    (is (not (u/xor false)))
+    (is (not (u/xor false false)))
+    (is (u/xor false true))
+    (is (u/xor true false))
+    (is (not (u/xor true true)))
+    (is (not (u/xor false false true true false)))
+    ))
 
 (deftest test-concatv
   (testing "test concatv"

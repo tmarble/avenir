@@ -17,6 +17,7 @@
 /target
 /checkouts
 /.lein-*
+/.cljs_rhino_repl
 
 # Editor artifacts
 .nrepl-port

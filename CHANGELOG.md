@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file. This change
 ### Added
 - *TBD*
 
+## [0.2.1] - 2016-04-13
+### Added
+- Added xor function
+
 ## [0.2.0] - 2016-02-22
 ### Added
 - Added math namespace
@@ -32,4 +36,5 @@ All notable changes to this project will be documented in this file. This change
 [0.1.1]: https://github.com/tmarble/avenir/compare/0.1.0...0.1.1
 [0.1.2]: https://github.com/tmarble/avenir/compare/0.1.1...0.1.2
 [0.2.0]: https://github.com/tmarble/avenir/compare/0.1.2...0.2.0
-[Unreleased]: https://github.com/tmarble/avenir/compare/0.2.0...HEAD
+[0.2.1]: https://github.com/tmarble/avenir/compare/0.2.0...0.2.1
+[Unreleased]: https://github.com/tmarble/avenir/compare/0.2.1...HEAD
