@@ -2,7 +2,7 @@
 
 Clojure utilities which may find a proper home in the [future](http://www.larousse.fr/dictionnaires/francais-anglais/avenir/6998)
 
-[![Clojars Project](https://img.shields.io/clojars/v/avenir.svg)](https://clojars.org/avenir) [![Build Status](https://travis-ci.org/tmarble/avenir.png?branch=master)](https://travis-ci.org/tmarble/avenir)
+[![Clojars Project](https://img.shields.io/clojars/v/avenir.svg)](https://clojars.org/avenir) [![Build Status](https://api.travis-ci.org/tmarble/avenir.png?branch=master)](https://travis-ci.org/tmarble/avenir)
 
 ## Usage
 
