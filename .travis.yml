@@ -5,9 +5,7 @@ install:
 - wget -O boot https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh
 - chmod 755 boot
 - export PATH="$PWD:$PATH"
-- export BOOT_VERSION=2.6.0-SNAPSHOT
-- export BOOT_CLOJURE_VERSION=1.8.0
-- export BOOT_EMIT_TARGET=no
+- export BOOT_HOME=.travis.boot
 before_script: boot show --deps
 script: boot testc
 notifications:
