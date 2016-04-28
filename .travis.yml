@@ -1,4 +1,4 @@
-language: clojure
+language: java
 jdk:
 - oraclejdk8
 install:
@@ -6,7 +6,6 @@ install:
 - chmod 755 boot
 - export PATH="$PWD:$PATH"
 - export BOOT_HOME=.travis.boot
-before_script: boot show --deps
+before_script: phantomjs -v
 script: boot testc
-notifications:
-  irc: "chat.freenode.net#bootclj"
+after_script: boot show --deps
