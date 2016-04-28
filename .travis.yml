@@ -1,0 +1,14 @@
+language: clojure
+jdk:
+- oraclejdk8
+install:
+- wget -O boot https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh
+- chmod 755 boot
+- export PATH="$PWD:$PATH"
+script: boot testc
+notifications:
+  irc:
+    channels
+    - "chat.freenode.net#bootclj"
+    on_success: always
+    on_failure: always
