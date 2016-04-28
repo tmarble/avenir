@@ -1,14 +1,16 @@
+# This is a Clojure project that uses boot (not leiningen!)
 language: clojure
 jdk:
 - oraclejdk8
-node_js:
-  - "4"
+# for more extensive browser testing
+# node_js:
+#  - "4"
 install:
 - wget -O boot https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh
 - chmod 755 boot
 - export PATH="$PWD:$PWD/node_modules/.bin:$PATH"
 - export BOOT_HOME=.travis.boot
-- npm install karma karma-cljs-test karma-cli
+# for more extensive browser testing
+# - npm install karma karma-cljs-test karma-cli
 before_script: boot show --deps
 script: boot testc
-after_script: ls -alR

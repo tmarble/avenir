@@ -47,6 +47,7 @@
        :license     {"MIT" "http://opensource.org/licenses/MIT"}}
   cljs {:source-map true}
   test-cljs {:js-env :phantom
+             :suite-ns 'testing.doo
              :namespaces #{"testing.avenir.utils" "testing.avenir.math"}}
   apidoc {:title (name project)
           :sources #{"src"}
@@ -83,19 +84,7 @@
 (deftask cider-boot
   "Cider boot params task"
   []
-  ;; (cljs-dev)
-  (comp
-    (sift :add-resource #{"html"})
-    (sift :include #{#"~$"} :invert true) ;; don't include emacs backups
-    (cider)
-    ;; (serve :dir "target")
-    (watch)
-    (reload)
-    (cljs-repl) ;; before cljs
-    (cljs)
-    (target :dir #{"target"}))
-  ;; (cider)
-  )
+  (cljs-dev))
 
 (deftask testing
   "merge source paths in for testing"

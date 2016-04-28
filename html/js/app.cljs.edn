@@ -4,5 +4,5 @@
                     :source-map-timestamp true
                     :verbose false
                     :cache-analysis true
-                    :optimizations :none
+                    :optimizations :whitespace
                     :pretty-print false}}
