@@ -6,7 +6,7 @@
 (set-env! :resource-paths #{"src"}
   :source-paths   #{"test"}
   :dependencies   '[[org.clojure/clojure "1.8.0" :scope "provided"]
-                    [org.clojure/clojurescript "1.8.40" :scope "provided"]
+                    [org.clojure/clojurescript "1.8.51" :scope "provided"]
                     ;; cljs-dev
                     [com.cemerick/piggieback "0.2.1"     :scope "test"]
                     [weasel                 "0.7.0"      :scope "test"]
