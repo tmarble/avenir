@@ -12,5 +12,7 @@ install:
 - export BOOT_HOME=.travis.boot
 # for more extensive browser testing
 # - npm install karma karma-cljs-test karma-cli
-before_script: boot show --deps
-script: boot testc
+# before_script: boot show --deps
+before_script: phantomjs -v
+script: boot -v testc
+after_script: ls -lR
