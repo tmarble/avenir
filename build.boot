@@ -18,6 +18,7 @@
 
                     ;; testing/development
                     [adzerk/boot-test "1.1.1" :scope "test"]
+                    [doo "0.1.7-SNAPSHOT" :scope "test"]
                     [crisptrutski/boot-cljs-test "0.2.2-SNAPSHOT" :scope "test"]
                     [adzerk/bootlaces "0.1.13" :scope "test"]
 

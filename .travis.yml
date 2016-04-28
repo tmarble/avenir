@@ -6,7 +6,7 @@ node_js:
 install:
 - wget -O boot https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh
 - chmod 755 boot
-- export PATH="$PWD:$PWD/node_modules/karma/bin:$PATH"
+- export PATH="$PWD:$PWD/node_modules/.bin:$PATH"
 - export BOOT_HOME=.travis.boot
 - npm install karma karma-cljs-test karma-cli
 before_script: boot show --deps
