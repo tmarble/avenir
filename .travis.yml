@@ -7,8 +7,4 @@ install:
 - export PATH="$PWD:$PATH"
 script: boot testc
 notifications:
-  irc:
-    channels
-    - "chat.freenode.net#bootclj"
-    on_success: always
-    on_failure: always
+  irc: "chat.freenode.net#bootclj"

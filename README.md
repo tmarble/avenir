@@ -136,6 +136,8 @@ npm install -g karma karma-cljs-test karma-cli karma-firefox-launcher
  * Both **tests** and **testc** run with PhantomJS by default, but you
    can run with Firefox with `boot testc -e firefox`
 
+Read here about [Travis CI](https://travis-ci.org/getting_started) integration.
+
 ## Copyright and license
 
 Copyright © 2016 Tom Marble
