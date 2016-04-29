@@ -45,8 +45,7 @@
        :license     {"MIT" "http://opensource.org/licenses/MIT"}}
   cljs {:source-map true}
   test-cljs {:js-env :phantom
-             :suite-ns 'testing.doo
-             ;; :namespaces #{"testing.avenir.utils" "testing.avenir.math"}
+             :namespaces #{"testing.avenir.utils" "testing.avenir.math"}
              :optimizations :none
              :exit? true}
   apidoc {:title (name project)
@@ -95,16 +94,8 @@
   "Test CLJS and leave artifacts in target for debugging"
   [e js-env VAL kw "Set the :js-env for test-cljs (:phantom)."]
   (comp
-    ;; (sift :add-resource #{"html"})
     (testing)
-    (test-cljs
-      :js-env (or js-env :phantom)
-      ;; :out-file "avenir.js"
-      ;; :cljs-opts {:asset-path "avenir.out"
-      ;;             :output-dir "avenir.out"
-      ;;             :verbose true}
-      ;; :update-fs? true
-      )))
+    (test-cljs :js-env (or js-env :phantom))))
 
 (deftask testc
   "Run both CLJ tests and CLJS tests"

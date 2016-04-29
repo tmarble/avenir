@@ -14,6 +14,7 @@
 ;; if selenium then test  else constant
 (deftest test-constants
   (testing "test constants"
+    ;; This test to ensure the js-env does not report a false negative
     (is #?(:clj true
            :cljs (= "force a" "cljs bug")))
     (is (= m/js-max-int
