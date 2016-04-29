@@ -10,7 +10,7 @@ install:
 - chmod 755 boot
 - npm install karma karma-cljs-test karma-cli karma-firefox-launcher
 - export RUNDIR=$(pwd -P)
-- export PATH=$RUNDIR:$RUNDIR/node_modules/karma/bin/karma:$PATH
+- export PATH=$RUNDIR:$RUNDIR/node_modules/karma/bin:$PATH
 - export BOOT_HOME=.travis.boot
 - export DISPLAY=:99.0
 - export JVM_OPTS="-server -Xms128m -Xmx512m -Xss512k -XX:MaxPermSize=128m"
