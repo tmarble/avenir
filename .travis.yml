@@ -2,17 +2,14 @@
 language: clojure
 jdk:
 - oraclejdk8
-# for more extensive browser testing
-# node_js:
-#  - "4"
 install:
 - wget -O boot https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh
 - chmod 755 boot
-- export PATH="$PWD:$PWD/node_modules/.bin:$PATH"
+- wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2
+- tar jxf phantomjs-2.1.1-linux-x86_64.tar.bz2
+- ln -s phantomjs-2.1.1-linux-x86_64/bin/phantomjs
+- export PATH="$PWD:$PATH"
 - export BOOT_HOME=.travis.boot
-# for more extensive browser testing
-# - npm install karma karma-cljs-test karma-cli
 # before_script: boot show --deps
 before_script: phantomjs -v
-script: boot -v testc
-after_script: ls -lR
+script: boot testc

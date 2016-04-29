@@ -18,7 +18,8 @@
 
                     ;; testing/development
                     [adzerk/boot-test "1.1.1" :scope "test"]
-                    [doo "0.1.7-SNAPSHOT" :scope "test"]
+                    ;; [doo "0.1.7-SNAPSHOT" :scope "test"]
+                    [doo "0.1.7-SNAPSHOT"]
                     [crisptrutski/boot-cljs-test "0.2.2-SNAPSHOT" :scope "test"]
                     [adzerk/bootlaces "0.1.13" :scope "test"]
 
@@ -32,6 +33,7 @@
   '[pandeiro.boot-http :refer [serve]]
   '[adzerk.boot-reload    :refer [reload]]
   '[adzerk.boot-test :refer [test]]
+  '[doo.runner :refer-macros [doo-tests]]
   '[crisptrutski.boot-cljs-test :refer [test-cljs]]
   '[adzerk.bootlaces :refer :all]
   '[funcool.boot-codeina :refer [apidoc]])
@@ -48,7 +50,9 @@
   cljs {:source-map true}
   test-cljs {:js-env :phantom
              :suite-ns 'testing.doo
-             :namespaces #{"testing.avenir.utils" "testing.avenir.math"}}
+             :namespaces #{"testing.avenir.utils" "testing.avenir.math"}
+             :optimizations :whitespace
+             }
   apidoc {:title (name project)
           :sources #{"src"}
           :description description
@@ -98,7 +102,10 @@
   (comp
     (sift :add-resource #{"html"})
     (testing)
-    (test-cljs :js-env (or js-env :phantom))
+    (test-cljs
+      :js-env (or js-env :phantom)
+      ;; :out-file "tests.js"
+      )
     (target :dir #{"target"})))
 
 (deftask testc
