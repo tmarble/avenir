@@ -16,3 +16,7 @@ before_script:
 - boot --version
 - phantomjs -v
 script: boot testc
+after_script:
+- ls -lR .travis.boot/cache/tmp
+- find .travis.boot/cache/tmp -name output.js | head -1 | xargs cat
+- find .travis.boot/cache/tmp -name cljs_deps.js | head -1 | xargs cat
