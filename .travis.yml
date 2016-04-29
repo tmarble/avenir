@@ -18,4 +18,4 @@ install:
 before_script:
 - boot --version
 - phantomjs -v
-script: boot testc
+script: boot --quiet testc
