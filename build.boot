@@ -97,7 +97,14 @@
   (comp
     ;; (sift :add-resource #{"html"})
     (testing)
-    (test-cljs :js-env (or js-env :phantom))))
+    (test-cljs
+      :js-env (or js-env :phantom)
+      ;; :out-file "fred.js"
+      ;; :cljs-opts {:asset-path "js/app.out"
+      ;;             :output-dir "js/app.out"
+      ;;             :verbose true}
+      :update-fs? true
+      )))
 
 (deftask testc
   "Run both CLJ tests and CLJS tests"
