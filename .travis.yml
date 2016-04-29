@@ -9,7 +9,8 @@ install:
 - wget -O boot https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh
 - chmod 755 boot
 - npm install karma karma-cljs-test karma-cli karma-firefox-launcher --save-dev
-- export PATH="$PWD:$PWD/node_modules/.bin;$PATH"
+- export CWD=$(pwd -P)
+- export PATH="$CWD:$CWD/node_modules/.bin;$PATH"
 - export BOOT_HOME=.travis.boot
 - export DISPLAY=:99.0
 - export JVM_OPTS="-server -Xms128m -Xmx512m -Xss512k -XX:MaxPermSize=128m"
