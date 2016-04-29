@@ -11,18 +11,15 @@ install:
 - export PATH="$PWD:$PWD/node_modules/.bin;$PATH"
 - export BOOT_HOME=.travis.boot
 - export DISPLAY=:99.0
-- export JVM_OPTS="-server -Xms128m -Xmx256m -Xss256k"
+- export JVM_OPTS="-server -Xms128m -Xmx512m -Xss512k"
 - export MAVEN_OPTS=$JVM_OPTS
 - export LEIN_JVM_OPTS=$JVM_OPTS
 - export BOOT_JVM_OPTIONS=$JVM_OPTS
 before_script:
-- java -version
 - boot --version
 - phantomjs -v
 - karma --version
 - firefox -v
 - "sh -e /etc/init.d/xvfb start" # start xvfb for firefox
 - sleep 5 # give xvfb some time to start
-- ulimit -a
-- free -m
 script: boot testc
