@@ -18,12 +18,11 @@ install:
 - export BOOT_JVM_OPTIONS=$JVM_OPTS
 before_script:
 - echo $PATH
+- which karma
 - boot --version
 - phantomjs -v
 - karma --version
 - firefox -v
 - "sh -e /etc/init.d/xvfb start" # start xvfb for firefox
 - sleep 5 # give xvfb some time to start
-- lein2 doo phantom test once
-- which karma
 script: boot testc
