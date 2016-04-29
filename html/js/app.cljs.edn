@@ -1,5 +1,6 @@
 {:require [avenir.utils avenir.math]
  :compiler-options {:asset-path "js/app.out"
+                    :output-dir "js/app.out" ;; for karma
                     :source-map true
                     :source-map-timestamp true
                     :verbose false
