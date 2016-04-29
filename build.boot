@@ -18,14 +18,11 @@
 
                     ;; testing/development
                     [adzerk/boot-test "1.1.1" :scope "test"]
-                    [doo "0.1.7-SNAPSHOT" :scope "test"]
-                    ;; [doo "0.1.7-SNAPSHOT"]
                     [crisptrutski/boot-cljs-test "0.2.2-SNAPSHOT" :scope "test"]
                     [adzerk/bootlaces "0.1.13" :scope "test"]
 
                     ;; api docs
-                    [net.info9/boot-codeina "0.2.1-SNAPSHOT" :scope "test"]
-                    ])
+                    [net.info9/boot-codeina "0.2.1-SNAPSHOT" :scope "test"]])
 
 (require
   '[adzerk.boot-cljs      :refer [cljs]]
@@ -33,7 +30,6 @@
   '[pandeiro.boot-http :refer [serve]]
   '[adzerk.boot-reload    :refer [reload]]
   '[adzerk.boot-test :refer [test]]
-  ;; '[doo.runner :refer-macros [doo-tests]]
   '[crisptrutski.boot-cljs-test :refer [test-cljs]]
   '[adzerk.bootlaces :refer :all]
   '[funcool.boot-codeina :refer [apidoc]])
@@ -48,17 +44,16 @@
        :scm         {:url project-url}
        :license     {"MIT" "http://opensource.org/licenses/MIT"}}
   cljs {:source-map true}
-  test-cljs {;; :js-env :phantom
+  test-cljs {:js-env :phantom
              :suite-ns 'testing.doo
              :namespaces #{"testing.avenir.utils" "testing.avenir.math"}
-             :optimizations :whitespace
-             }
+             :optimizations :none
+             :exit? true}
   apidoc {:title (name project)
           :sources #{"src"}
           :description description
           :version version
           :format :markdown
-          ;; :include #{'avenir.utils 'avenir.math}
           :reader :cljc
           :src-uri "https://github.com/tmarble/avenir/blob/master/"
           :src-uri-prefix "#L"})
@@ -100,22 +95,16 @@
   "Test CLJS and leave artifacts in target for debugging"
   [e js-env VAL kw "Set the :js-env for test-cljs (:phantom)."]
   (comp
-    (sift :add-resource #{"html"})
+    ;; (sift :add-resource #{"html"})
     (testing)
-    (test-cljs
-      ;; :js-env (or js-env :phantom)
-      :js-env (or js-env :firefox)
-      ;; :out-file "tests.js"
-      )
-    (target :dir #{"target"})))
+    (test-cljs :js-env (or js-env :phantom))))
 
 (deftask testc
   "Run both CLJ tests and CLJS tests"
   [e js-env VAL kw "Set the :js-env for test-cljs (:phantom)."]
   (comp
     (test)
-    ;; (tests :js-env (or js-env :phantom))))
-    (tests :js-env (or js-env :firefox))))
+    (tests :js-env (or js-env :phantom))))
 
 (deftask build
   "Build jar and install to local repo."

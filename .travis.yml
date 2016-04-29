@@ -1,29 +1,18 @@
 # This is a Clojure project that uses boot (not leiningen!)
 language: clojure
-lein: lein2
 jdk:
 - oraclejdk8
-node_js:
- - "4"
 install:
 - wget -O boot https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh
 - chmod 755 boot
-- npm install karma karma-cljs-test karma-cli karma-firefox-launcher
 - export RUNDIR=$(pwd -P)
-- export PATH=$RUNDIR:$RUNDIR/node_modules/karma/bin:$PATH
+- export PATH=$RUNDIR:$PATH
 - export BOOT_HOME=.travis.boot
-- export DISPLAY=:99.0
-- export JVM_OPTS="-server -Xms128m -Xmx512m -Xss512k -XX:MaxPermSize=128m"
+- export JVM_OPTS="-server -Xms128m -Xmx512m -Xss512k"
 - export MAVEN_OPTS=$JVM_OPTS
 - export LEIN_JVM_OPTS=$JVM_OPTS
 - export BOOT_JVM_OPTIONS=$JVM_OPTS
 before_script:
-- echo $PATH
-- which karma
 - boot --version
 - phantomjs -v
-- karma --version
-- firefox -v
-- "sh -e /etc/init.d/xvfb start" # start xvfb for firefox
-- sleep 5 # give xvfb some time to start
 script: boot testc

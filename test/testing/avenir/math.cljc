@@ -14,6 +14,7 @@
 ;; if selenium then test  else constant
 (deftest test-constants
   (testing "test constants"
+    (is (= "force a" "bug"))
     (is (= m/js-max-int
           #?(:clj 9007199254740991
              :cljs (if phantomjs?
