@@ -12,8 +12,9 @@ install:
 - export BOOT_HOME=.travis.boot
 before_script:
 - java -version
+- boot --version
 - phantomjs -v
-- karma -v
+- karma --version
 - firefox -v
 - "export DISPLAY=:99.0"
 - "sh -e /etc/init.d/xvfb start" # start xvfb for firefox
