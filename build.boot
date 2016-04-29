@@ -46,7 +46,7 @@
   cljs {:source-map true}
   test-cljs {:js-env :phantom
              :suite-ns 'testing.doo
-             :namespaces #{"testing.avenir.utils" "testing.avenir.math"}
+             ;; :namespaces #{"testing.avenir.utils" "testing.avenir.math"}
              :optimizations :none
              :exit? true}
   apidoc {:title (name project)
@@ -99,11 +99,11 @@
     (testing)
     (test-cljs
       :js-env (or js-env :phantom)
-      ;; :out-file "fred.js"
-      ;; :cljs-opts {:asset-path "js/app.out"
-      ;;             :output-dir "js/app.out"
+      ;; :out-file "avenir.js"
+      ;; :cljs-opts {:asset-path "avenir.out"
+      ;;             :output-dir "avenir.out"
       ;;             :verbose true}
-      :update-fs? true
+      ;; :update-fs? true
       )))
 
 (deftask testc

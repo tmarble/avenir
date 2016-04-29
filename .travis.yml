@@ -7,7 +7,7 @@ install:
 - chmod 755 boot
 - export RUNDIR=$(pwd -P)
 - export PATH=$RUNDIR:$PATH
-- export BOOT_HOME=.travis.boot
+- export BOOT_HOME=$RUNDIR/.travis.boot
 - export JVM_OPTS="-server -Xms128m -Xmx512m -Xss512k"
 - export MAVEN_OPTS=$JVM_OPTS
 - export LEIN_JVM_OPTS=$JVM_OPTS
