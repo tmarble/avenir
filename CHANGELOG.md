@@ -4,7 +4,6 @@ All notable changes to this project will be documented in this file. This change
 ## [Unreleased]
 ### Added
 - [Travis CI](https://travis-ci.org/tmarble/avenir) support
-- *TBD*
 
 ## [0.2.1] - 2016-04-13
 ### Added

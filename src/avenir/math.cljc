@@ -1,11 +1,25 @@
 (ns avenir.math
   "Math functions from *l'avenir* (the future)!"
+  ;; #?(:cljs (:require [weasel.repl :as repl])) ;; For CIDER REPL only
   #?(:clj (:import [java.lang
                     Math])))
 
+;; For CIDER REPL only
+;; #?(:cljs
+;;    (do
+;;      ;; Set the value below to true if using IntelliJ/Cursive (else false)
+;;      (def cursive? false)
+;;      (defonce weasel? (atom cursive?)) ;; see NOTE below
+;;      (when-not @weasel?  ;; see NOTE below
+;;        ;; Connect via Weasel to nREPL for development
+;;        (println "connecting to Weasel..")
+;;        (repl/connect "ws://localhost:9001")
+;;        (reset! weasel? true)))
+;;    )
+
 ;; constants
 
-;;; https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER
+;;; https://developer.mozilla.org/en-US/docs/Web/Javactript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER
 ;; NOTE: (.-MAX_SAFE_INTEGER js/Number) may not be available in phantomjs
 (def #^{:added "0.2.0"}
   js-max-int
