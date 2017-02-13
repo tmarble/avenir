@@ -3,7 +3,14 @@ All notable changes to this project will be documented in this file. This change
 
 ## [Unreleased]
 ### Added
+- _TBD_
+
+## [0.2.2] - 2017-02-13
+### Added
 - [Travis CI](https://travis-ci.org/tmarble/avenir) support
+- Updated dependencies
+- Updated dual-REPL configuration
+- Replaced build-target with build-install (to properly sift out emacs files)
 
 ## [0.2.1] - 2016-04-13
 ### Added
@@ -37,4 +44,5 @@ All notable changes to this project will be documented in this file. This change
 [0.1.2]: https://github.com/tmarble/avenir/compare/0.1.1...0.1.2
 [0.2.0]: https://github.com/tmarble/avenir/compare/0.1.2...0.2.0
 [0.2.1]: https://github.com/tmarble/avenir/compare/0.2.0...0.2.1
-[Unreleased]: https://github.com/tmarble/avenir/compare/0.2.1...HEAD
+[0.2.2]: https://github.com/tmarble/avenir/compare/0.2.1...0.2.2
+[Unreleased]: https://github.com/tmarble/avenir/compare/0.2.2...HEAD
